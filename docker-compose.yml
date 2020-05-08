@@ -1,0 +1,23 @@
+version: '3'
+services:
+        httpdserver:
+                image: httpd:2.4
+                volumes:
+                        - serverstorage:/usr/local/apache2/htdocs/
+                restart: always
+                ports: 
+                - 8081:80
+
+        teamserver:
+                image: httpd:2.4
+                volumes:
+                        - teamstorage:/usr/local/apache2/htdocs/
+                restart: always
+                depends_on:
+                        - httpdserver
+                ports: 
+                - 8082:80
+
+volumes:
+        serverstorage:
+        teamstorage:
