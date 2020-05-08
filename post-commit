@@ -1,0 +1,11 @@
+#!/bin/bash
+
+echo "You are commiting and pushing"
+if git rev-parse --abbrev-ref HEAD | grep dev2
+then
+git push origin dev2
+curl --user "admin:redhat" 192.168.43.24:8080/job/projectjob1/build?token=password
+else
+git push origin master
+curl --user "admin:redhat" 192.168.43.24:8080/job/projectjobs2/build?token=password
+fi

@@ -1,0 +1,4 @@
+#!/bin/bash
+
+git push origin master
+curl --user "admin:redhat" 192.168.43.24:8080/job/projectjobs2/build?token=password
